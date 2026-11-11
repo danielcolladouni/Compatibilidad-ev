@@ -170,6 +170,12 @@
   .accList li{padding:4px 0;border-bottom:1px solid var(--line2);}
   .accList li:last-child{border-bottom:none;}
   @media (max-width:520px){ .accName{font-size:26px;} .accStep{font-size:10px;} }
+  /* Leyenda compacta de umbrales de riesgo */
+  .thr{padding:10px 18px 12px;border-bottom:1px solid var(--line2);display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center;}
+  .thrL{font-size:10.5px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;}
+  .thrBar{display:flex;border-radius:7px;overflow:hidden;height:22px;}
+  .thrBar span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:10.5px;font-weight:600;white-space:nowrap;padding:0 3px;}
+  .thrV{font-size:10.5px;font-weight:600;color:#fff;background:var(--r-alto);border-radius:7px;padding:4px 9px;justify-self:start;}
 </style>
 </head>
 <body>
@@ -404,7 +410,7 @@ function renderProps(){
     } else { cards+=`<div style="font-size:13px;color:var(--ink2)">No tengo datos de propiedades fisicoqu\u00edmicas (osmolaridad, pH, vesicante) para este f\u00e1rmaco.</div>`; }
     cards+=`</div>`;
   });
-  el.innerHTML=`<div class="section"><div class="secHead">Propiedades fisicoqu\u00edmicas</div>${cards}</div>`;
+  el.innerHTML=`<div class="section"><div class="secHead">Propiedades fisicoqu\u00edmicas</div><div class="thr"><span class="thrL">Osm</span><div class="thrBar"><span style="background:var(--r-bajo);flex:3">&lt;450</span><span style="background:var(--r-mod);flex:2">450\u2013600</span><span style="background:var(--r-alto);flex:2">&gt;600</span></div><span class="thrL">pH</span><div class="thrBar"><span style="background:var(--r-alto);flex:2">&lt;4</span><span style="background:var(--r-mod);flex:2">4\u20135</span><span style="background:var(--r-bajo);flex:3">5\u20137,5</span><span style="background:var(--r-mod);flex:2.4">7,5\u20139</span><span style="background:var(--r-alto);flex:2">&gt;9</span></div><span class="thrL">Ves</span><span class="thrV">Vesicante = riesgo alto</span></div>${cards}</div>`;
 }
 function renderStatus(){
   const el=document.getElementById('status');
